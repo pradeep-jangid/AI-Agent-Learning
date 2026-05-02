@@ -20,12 +20,17 @@ A hands-on repo documenting my path from zero to building AI agents — experime
 ```
 AI-Agent-Learning/
 ├── My-First-Agent/
-│   ├── main.py                  # Project entry point
 │   ├── openai_first_call.py     # First OpenAI API call (gpt-4o-mini)
 │   ├── openai_run.py            # OpenAI-compatible call to local Ollama
 │   ├── gemini_first_api_call.py # First Gemini API call (gemini-2.5-flash)
 │   ├── ollama_ran.py            # Local LLM via Ollama Python SDK
 │   └── Modelfile                # Custom Ollama model — AI tutor persona
+├── agent_python/
+│   ├── oop_for_agent.py         # OOP patterns for agents (BaseAgent class)
+│   ├── my_pydantic.py           # Pydantic models for tool calls & structured output
+│   ├── demo_asyncio.py          # Async LLM calls with asyncio
+│   └── mini_llm_project/
+│       └── call_gemini_model.py # Async Gemini calls
 ├── pyproject.toml               # Dependencies (uv)
 ├── .python-version              # Python 3.12
 └── .env                         # API keys (not committed)
@@ -50,6 +55,32 @@ genai.GenerativeModel("gemini-2.5-flash", system_instruction="...")
 model.generate_content("...", generation_config=GenerationConfig(...))
 ```
 Key learnings: Gemini SDK differs from OpenAI — system prompt passed at model init, not in messages.
+
+---
+
+## Phase 2.5 — Python Fundamentals for Agents (`agent_python/`)
+
+### OOP for Agents (`oop_for_agent.py`)
+```python
+class BaseAgent:
+    def __init__(self, name: str, model: str = "gpt-4o-mini"):
+        ...
+```
+Key learnings: Agent as a class, encapsulating model + name, foundation for multi-agent systems.
+
+### Pydantic for Structured Output (`my_pydantic.py`)
+```python
+class ToolCall(BaseModel):
+    name: str = Field(description="Tool name")
+```
+Key learnings: Validate LLM responses with Pydantic — ensures structured tool call parsing.
+
+### Async LLM Calls (`demo_asyncio.py`, `mini_llm_project/call_gemini_model.py`)
+```python
+async def call_llm(model: str, sleep_time: int) -> str: ...
+await asyncio.gather(call_llm("gpt-4o"), call_llm("gemini"))
+```
+Key learnings: `asyncio.gather` runs multiple LLM calls concurrently — critical for agent parallelism.
 
 ---
 
@@ -126,3 +157,6 @@ GEMINI_API_KEY=AIza...
 | Local LLM inference | `ollama_ran.py` |
 | OpenAI-compatible endpoints | `openai_run.py` |
 | Custom model personas | `Modelfile` |
+| OOP agent design | `agent_python/oop_for_agent.py` |
+| Pydantic structured output | `agent_python/my_pydantic.py` |
+| Async concurrent LLM calls | `agent_python/demo_asyncio.py` |
