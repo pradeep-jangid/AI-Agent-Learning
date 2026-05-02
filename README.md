@@ -6,12 +6,18 @@ A hands-on repo documenting my path from zero to building AI agents — experime
 
 ## Roadmap
 
-- [x] **Phase 1** — First API calls (OpenAI, Gemini, Ollama)
-- [x] **Phase 2** — Local models with Ollama + custom Modelfile
-- [ ] **Phase 3** — Tool use & function calling
-- [ ] **Phase 4** — Memory & context management
-- [ ] **Phase 5** — Multi-agent systems
-- [ ] **Phase 6** — Production-ready agent with LangChain
+| Phase | Topic | Status |
+|-------|-------|--------|
+| 1 | Python for agents | ✅ |
+| 2 | LLM fundamentals | ✅ |
+| 3 | Prompt & context engineering | 🔲 |
+| 4 | RAG and embeddings | 🔲 |
+| 5 | Single agents (from scratch, then LangChain 1.0) | 🔲 |
+| 6 | Agentic design patterns | 🔲 |
+| 7 | Multi-agent systems (CrewAI, LangGraph, AutoGen) | 🔲 |
+| 8 | MCP + A2A protocols | 🔲 |
+| 9 | Evals, observability, guardrails | 🔲 |
+| 10 | Deployment + capstone | 🔲 |
 
 ---
 
@@ -25,7 +31,7 @@ AI-Agent-Learning/
 │   ├── gemini_first_api_call.py # First Gemini API call (gemini-2.5-flash)
 │   ├── ollama_ran.py            # Local LLM via Ollama Python SDK
 │   └── Modelfile                # Custom Ollama model — AI tutor persona
-├── agent_python/
+├── python_for_agents/
 │   ├── oop_for_agent.py         # OOP patterns for agents (BaseAgent class)
 │   ├── my_pydantic.py           # Pydantic models for tool calls & structured output
 │   ├── demo_asyncio.py          # Async LLM calls with asyncio
@@ -38,7 +44,7 @@ AI-Agent-Learning/
 
 ---
 
-## Phase 1 — First API Calls
+## Phase 2 — LLM Fundamentals
 
 ### OpenAI (`openai_first_call.py`)
 ```python
@@ -58,7 +64,7 @@ Key learnings: Gemini SDK differs from OpenAI — system prompt passed at model 
 
 ---
 
-## Phase 2.5 — Python Fundamentals for Agents (`agent_python/`)
+## Phase 1 — Python for Agents (`python_for_agents/`)
 
 ### OOP for Agents (`oop_for_agent.py`)
 ```python
@@ -84,7 +90,7 @@ Key learnings: `asyncio.gather` runs multiple LLM calls concurrently — critica
 
 ---
 
-## Phase 2 — Local Models with Ollama
+### Local Models with Ollama
 
 ### Ollama Python SDK (`ollama_ran.py`)
 ```python
@@ -141,8 +147,8 @@ GEMINI_API_KEY=AIza...
 | `openai` | OpenAI + Ollama OpenAI-compat API |
 | `google-generativeai` | Gemini API |
 | `ollama` | Local models via Ollama |
-| `anthropic` | Claude API (Phase 3+) |
-| `langchain` | Agent framework (Phase 6) |
+| `anthropic` | Claude API (Phase 2+) |
+| `langchain` | Agent framework (Phase 5) |
 | `pydantic` | Data validation |
 | `python-dotenv` | Env var loading |
 
@@ -157,6 +163,6 @@ GEMINI_API_KEY=AIza...
 | Local LLM inference | `ollama_ran.py` |
 | OpenAI-compatible endpoints | `openai_run.py` |
 | Custom model personas | `Modelfile` |
-| OOP agent design | `agent_python/oop_for_agent.py` |
-| Pydantic structured output | `agent_python/my_pydantic.py` |
-| Async concurrent LLM calls | `agent_python/demo_asyncio.py` |
+| OOP agent design | `python_for_agents/oop_for_agent.py` |
+| Pydantic structured output | `python_for_agents/my_pydantic.py` |
+| Async concurrent LLM calls | `python_for_agents/demo_asyncio.py` |
